@@ -2,27 +2,31 @@ package com.ilkeruzer.nasa.ui.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.tabs.TabLayoutMediator
+import com.ilkeruzer.nasa.R
 import com.ilkeruzer.nasa.databinding.ActivityMainBinding
-import com.ilkeruzer.nasa.ui.adapter.CustomFragmentPagerAdapter
+import com.ilkeruzer.nasa.ui.adapter.ViewPagerStateAdapter
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var fragmentPagerAdapter: CustomFragmentPagerAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setUpUI()
+        initViewPager()
     }
 
-    private fun setUpUI() {
-        binding.navigationTab.setTabIndex(0,true)
-        fragmentPagerAdapter = CustomFragmentPagerAdapter(supportFragmentManager)
-        binding.viewPager.adapter = fragmentPagerAdapter
-        binding.navigationTab.setViewPager(binding.viewPager)
+    private fun initViewPager() {
+        val adapter = ViewPagerStateAdapter(supportFragmentManager,lifecycle)
+        val names = resources.getStringArray(R.array.titles)
+        binding.viewpager.adapter = adapter
+        TabLayoutMediator(binding.tablayout,binding.viewpager){tab, position ->
+            tab.text = names[position]
+        }.attach()
     }
+
 
 }

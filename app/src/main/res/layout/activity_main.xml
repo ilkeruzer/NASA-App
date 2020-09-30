@@ -6,33 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".ui.activity.MainActivity">
 
-    <com.gigamole.navigationtabstrip.NavigationTabStrip
-        android:id="@+id/navigationTab"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:nts_active_color="@color/colorAccent"
-        app:nts_animation_duration="300"
-        app:nts_color="@color/colorAccent"
-        app:nts_corners_radius="1.5dp"
-        app:nts_factor="2.5"
-        android:background="@color/colorPrimary"
-        app:nts_gravity="bottom"
-        app:nts_inactive_color="#c4c4c4"
-        app:nts_size="16sp"
-        app:nts_titles="@array/titles"
-        app:nts_type="point"
-        app:nts_weight="5dp" />
-
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewPager"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewpager"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/navigationTab" />
+        app:layout_constraintTop_toBottomOf="@+id/tablayout" />
+
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tablayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
