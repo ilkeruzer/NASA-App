@@ -18,7 +18,7 @@ class CuriosityViewModel(
         return "İlker ÜZer"
     }
 
-    fun getLiveData(page : Int = 1): LiveData<ArrayList<Photo?>> {
-        return repository.curiosityLiveData(page)
+    fun getLiveData(page : Int = 1,camera: String? = null): LiveData<ArrayList<Photo?>> {
+        return repository.curiosityLiveData(page,camera)
     }
 }

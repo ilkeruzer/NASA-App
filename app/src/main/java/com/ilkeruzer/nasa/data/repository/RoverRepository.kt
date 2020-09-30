@@ -6,15 +6,16 @@ import androidx.lifecycle.MutableLiveData
 import com.ilkeruzer.nasa.data.service.ApiService
 import com.ilkeruzer.nasa.data.service.IResource
 import com.ilkeruzer.nasa.model.BaseResponse
+import com.ilkeruzer.nasa.model.Camera
 import com.ilkeruzer.nasa.model.Photo
 
 class RoverRepository(
     private val service: ApiService
 ) {
 
-    fun curiosityLiveData(page: Int): LiveData<ArrayList<Photo?>> {
+    fun curiosityLiveData(page: Int,camera: String? = null): LiveData<ArrayList<Photo?>> {
         val liveData = MutableLiveData<ArrayList<Photo?>>()
-        service.getCuriosity(page = page)
+        service.getCuriosity(page = page,camera = camera)
             .apiResponse(object : IResource<BaseResponse> {
                 override fun onSuccess(t: BaseResponse) {
                     liveData.postValue(t.photoList)

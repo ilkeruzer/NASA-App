@@ -11,6 +11,7 @@ interface IApiService {
 
     @GET("v1/rovers/curiosity/photos")
     fun getCuriosity(
+        @Query("camera") camera: String?,
         @Query("sol") sol: Int,
         @Query("api_key") key: String = BuildConfig.API_KEY,
         @Query("page") page: Int

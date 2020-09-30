@@ -58,7 +58,8 @@ class CuriosityFragment : BaseFragment<CuriosityViewModel>(), IBaseListener.Adap
     }
 
     override fun onLoadMore(itemCount: Int) {
-        val page = (itemCount / 25) + 1
+        // TODO: list size dinamik olarak alınacak
+        val page = (itemCount / roverAdapter.getList()!!.size) + 1
         viewModel.getLiveData(page).observe(this, {
             Log.d("CuriosityFragment", "onLoadMore: $it ")
             roverAdapter.notifyDataSet(it)
