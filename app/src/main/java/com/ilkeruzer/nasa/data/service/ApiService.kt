@@ -1,12 +1,12 @@
-package com.ilkeruzer.nasa.data
+package com.ilkeruzer.nasa.data.service
 
 import com.ilkeruzer.nasa.model.BaseResponse
 
 class ApiService(private val service: IApiService) {
 
     fun getCuriosity(
-         sol: Int = DEFAULT_SOL,
-         page: Int = DEFAULT_PAGE
+        sol: Int = DEFAULT_SOL,
+        page: Int = DEFAULT_PAGE
 
     ) : ApiServiceGateway<BaseResponse> {
         return ApiServiceGateway(

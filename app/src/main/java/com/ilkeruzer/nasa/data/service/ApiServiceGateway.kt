@@ -1,4 +1,4 @@
-package com.ilkeruzer.nasa.data
+package com.ilkeruzer.nasa.data.service
 
 import android.util.Log
 import io.reactivex.Observable

@@ -1,4 +1,4 @@
-package com.ilkeruzer.nasa.data
+package com.ilkeruzer.nasa.data.service
 
 interface IResource<T> {
     fun onSuccess(t: T)

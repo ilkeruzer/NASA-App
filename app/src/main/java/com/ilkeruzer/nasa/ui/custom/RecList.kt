@@ -26,13 +26,9 @@ class RecList : RecyclerView {
 
 
     private fun init(context: Context, attrs: AttributeSet?) {
-        //    setAttr(attrs);
 
     }
 
-    /* private fun setAttr(attrs: AttributeSet?) {
-     }
-     */
 
     fun setRecyclerView(isVertical: Boolean) {
         layoutManager = if (isVertical) {

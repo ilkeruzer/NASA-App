@@ -1,4 +1,4 @@
-package com.ilkeruzer.nasa.data
+package com.ilkeruzer.nasa.data.service
 
 import com.ilkeruzer.nasa.BuildConfig
 import okhttp3.OkHttpClient
