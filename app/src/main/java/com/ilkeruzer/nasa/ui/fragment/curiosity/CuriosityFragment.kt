@@ -18,6 +18,9 @@ class CuriosityFragment : BaseFragment<CuriosityViewModel>(), IBaseListener.Adap
     private val vM by inject<CuriosityViewModel>()
     private lateinit var binding: FragmentCuriosityBinding
     private val roverAdapter by inject<RoverAdapter>()
+    private var listSize : Int = 1
+
+    //TODO: MainActivity AppBar Eklenik kamerelar oraya eklenecek
 
     override fun equalsViewModel(savedInstanceState: Bundle?) {
         viewModel = vM
@@ -39,9 +42,10 @@ class CuriosityFragment : BaseFragment<CuriosityViewModel>(), IBaseListener.Adap
     }
 
     private fun setData() {
-        viewModel.getLiveData().observe(this, {
+        viewModel.getLiveData(camera = "MAST").observe(this, {
             binding.recList.visibility = View.VISIBLE
             roverAdapter.notifyReload(it)
+            listSize = roverAdapter.itemCount
         })
     }
 
@@ -58,9 +62,8 @@ class CuriosityFragment : BaseFragment<CuriosityViewModel>(), IBaseListener.Adap
     }
 
     override fun onLoadMore(itemCount: Int) {
-        // TODO: list size dinamik olarak alınacak
-        val page = (itemCount / roverAdapter.getList()!!.size) + 1
-        viewModel.getLiveData(page).observe(this, {
+        val page = (itemCount / listSize) + 1
+        viewModel.getLiveData(page = page,camera = "MAST").observe(this, {
             Log.d("CuriosityFragment", "onLoadMore: $it ")
             roverAdapter.notifyDataSet(it)
         })
