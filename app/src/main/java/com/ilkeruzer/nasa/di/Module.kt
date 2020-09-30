@@ -1,5 +1,8 @@
 package com.ilkeruzer.nasa.di
 
+import com.ilkeruzer.nasa.data.ApiService
+import com.ilkeruzer.nasa.data.ApiServiceChief
+import com.ilkeruzer.nasa.data.IApiService
 import com.ilkeruzer.nasa.ui.fragment.curiosity.CuriosityViewModel
 import com.ilkeruzer.nasa.ui.fragment.opportunity.OpportunityViewModel
 import com.ilkeruzer.nasa.ui.fragment.spirit.SpiritViewModel
@@ -11,11 +14,11 @@ val appModule = module {
 }
 
 val networkModule = module {
-
+    single { ApiService(ApiServiceChief.getRetrofit()!!.create(IApiService::class.java)) }
 }
 
 val viewModelModule = module {
-    viewModel { CuriosityViewModel() }
+    viewModel { CuriosityViewModel(get()) }
     viewModel { OpportunityViewModel() }
     viewModel { SpiritViewModel() }
 }

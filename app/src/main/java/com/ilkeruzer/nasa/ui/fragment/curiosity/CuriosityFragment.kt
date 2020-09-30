@@ -29,6 +29,9 @@ class CuriosityFragment : BaseFragment<CuriosityViewModel>() {
 
     override fun viewCreated(view: View, savedInstanceState: Bundle?) {
         Log.d("CuriosityFragment", "viewCreated: ${viewModel.testString()}")
+        viewModel.testLiveData().observe(this, {
+            Log.d("CuriosityFragment", "viewCreated: $it ")
+        })
     }
 
 
