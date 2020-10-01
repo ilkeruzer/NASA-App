@@ -28,4 +28,20 @@ class RoverRepository(
             })
         return liveData
     }
+
+    fun opportunityLiveData(page: Int,camera: String? = null): LiveData<ArrayList<Photo?>> {
+        val liveData = MutableLiveData<ArrayList<Photo?>>()
+        service.getOpportunity(page = page,camera = camera)
+            .apiResponse(object : IResource<BaseResponse> {
+                override fun onSuccess(t: BaseResponse) {
+                    liveData.postValue(t.photoList)
+                }
+
+                override fun onFailed() {
+                    Log.e("CuriosityViewModel", "onFailed: ")
+                }
+
+            })
+        return liveData
+    }
 }

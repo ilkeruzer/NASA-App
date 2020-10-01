@@ -15,6 +15,17 @@ class ApiService(private val service: IApiService) {
         )
     }
 
+    fun getOpportunity(
+        sol: Int = DEFAULT_SOL,
+        page: Int = DEFAULT_PAGE,
+        camera: String? = DEFAULT_CAMERA
+
+    ) : ApiServiceGateway<BaseResponse> {
+        return ApiServiceGateway(
+            service.getOpportunity(sol = sol,page = page,camera = camera)
+        )
+    }
+
     companion object {
         const val DEFAULT_SOL = 1000
         const val DEFAULT_PAGE = 1

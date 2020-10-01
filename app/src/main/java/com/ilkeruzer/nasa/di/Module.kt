@@ -12,7 +12,7 @@ import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val appModule = module {
-    single { RoverAdapter(ArrayList(),false) }
+    factory { RoverAdapter(ArrayList(),false) }
 
     single { RoverRepository(get()) }
 }
@@ -23,6 +23,6 @@ val networkModule = module {
 
 val viewModelModule = module {
     viewModel { CuriosityViewModel(get()) }
-    viewModel { OpportunityViewModel() }
+    viewModel { OpportunityViewModel(get()) }
     viewModel { SpiritViewModel() }
 }

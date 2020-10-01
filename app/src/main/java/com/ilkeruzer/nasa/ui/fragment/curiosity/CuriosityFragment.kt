@@ -1,5 +1,6 @@
 package com.ilkeruzer.nasa.ui.fragment.curiosity
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -48,6 +49,7 @@ class CuriosityFragment : BaseFragment<CuriosityViewModel>(), IBaseListener.Adap
     private fun filterIconClick() {
         activity!!.imageFilterIcon.setOnClickListener {
             cameraBottomSheet = CameraBottomSheet().newInstance("Curiosity")
+            cameraBottomSheet.itemType = "Curiosity"
             cameraBottomSheet.show(activity!!.supportFragmentManager, cameraBottomSheet.tag)
             cameraBottomSheet.setListener(this)
         }
@@ -56,6 +58,7 @@ class CuriosityFragment : BaseFragment<CuriosityViewModel>(), IBaseListener.Adap
     private fun setData(camera: String? = null) {
         showLoading()
         viewModel.getLiveData(camera = camera).observe(this, {
+            Log.d("CuriosityFragment", "setData: ")
             if (it == null || it.size == 0) recyclerNullItem()
             else initRecycler()
             stopLoading()
@@ -97,8 +100,16 @@ class CuriosityFragment : BaseFragment<CuriosityViewModel>(), IBaseListener.Adap
 
     override fun listViewClickListener(position: Int) {
         cameraCode = resources.getStringArray(R.array.curiosity_code)[position]
+        Log.d("CuriosityFragment", "listViewClickListener: $cameraCode")
         setData(cameraCode)
     }
 
 
+    override fun onResume() {
+        super.onResume()
+        filterIconClick()
+    }
 }
+
+
+

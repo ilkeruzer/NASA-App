@@ -43,6 +43,11 @@ abstract class BaseFragment<VM : BaseViewModel>() : Fragment() {
         viewModel.unSubscribeViewModel()
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.unSubscribeViewModel()
+    }
+
     open fun showLoading() {
         if (activity!!.isFinishing) {
             return
