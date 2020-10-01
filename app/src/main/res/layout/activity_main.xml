@@ -4,7 +4,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/page_bg_color"
     tools:context=".ui.activity.MainActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/appBar_height"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@android:color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="@dimen/appBar_image_width"
+                android:layout_height="@dimen/appBar_image_height"
+                android:layout_centerInParent="true"
+                android:src="@drawable/nasa"
+                android:contentDescription="@string/app_name" />
+
+            <ImageView
+                android:layout_width="@dimen/filter_icon_size"
+                android:layout_height="@dimen/filter_icon_size"
+                android:src="@drawable/ic_filter_list"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="@dimen/filter_icon_margin"
+                android:layout_marginEnd="@dimen/filter_icon_margin"
+                android:contentDescription="@string/app_name" />
+
+
+        </RelativeLayout>
+
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewpager"
@@ -19,11 +58,11 @@
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tablayout"
         android:layout_width="0dp"
-        android:background="@color/colorPrimary"
-        app:tabTextColor="@android:color/white"
         android:layout_height="wrap_content"
+        android:background="@color/page_bg_color"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/appBar"
+        app:tabTextColor="@android:color/white" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

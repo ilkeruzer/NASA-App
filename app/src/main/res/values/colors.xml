@@ -3,4 +3,6 @@
     <color name="colorPrimary">#2B3F98</color>
     <color name="colorPrimaryDark">#2B3F98</color>
     <color name="colorAccent">#EF1D26</color>
+    <color name="tabbar_color">#191919</color>
+    <color name="page_bg_color">#1C1C1C</color>
 </resources>
