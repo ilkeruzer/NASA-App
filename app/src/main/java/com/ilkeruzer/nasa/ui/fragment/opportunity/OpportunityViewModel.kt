@@ -9,10 +9,6 @@ class OpportunityViewModel(
     private val repository: RoverRepository
 ) : BaseViewModel() {
 
-    fun testString(): String {
-        return "İlker Üzer"
-    }
-
     fun getLiveData(page : Int = 1,camera: String? = null): LiveData<ArrayList<Photo?>> {
         return repository.opportunityLiveData(page,camera)
     }

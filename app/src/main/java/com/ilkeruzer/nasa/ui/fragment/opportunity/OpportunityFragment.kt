@@ -52,7 +52,6 @@ class OpportunityFragment : BaseFragment<OpportunityViewModel>(), IBaseListener.
     private fun filterIconClick() {
         activity!!.imageFilterIcon.setOnClickListener {
             cameraBottomSheet = CameraBottomSheet().newInstance("Opportunity")
-            cameraBottomSheet.itemType = "Opportunity"
             cameraBottomSheet.show(activity!!.supportFragmentManager, cameraBottomSheet.tag)
             cameraBottomSheet.setListener(this)
         }

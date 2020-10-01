@@ -1,6 +1,5 @@
 package com.ilkeruzer.nasa.ui.fragment.curiosity
 
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -49,7 +48,6 @@ class CuriosityFragment : BaseFragment<CuriosityViewModel>(), IBaseListener.Adap
     private fun filterIconClick() {
         activity!!.imageFilterIcon.setOnClickListener {
             cameraBottomSheet = CameraBottomSheet().newInstance("Curiosity")
-            cameraBottomSheet.itemType = "Curiosity"
             cameraBottomSheet.show(activity!!.supportFragmentManager, cameraBottomSheet.tag)
             cameraBottomSheet.setListener(this)
         }

@@ -25,4 +25,12 @@ interface IApiService {
         @Query("page") page: Int
     ) : Observable<Response<BaseResponse>>
 
+    @GET("v1/rovers/spirit/photos")
+    fun getSpirit(
+        @Query("camera") camera: String?,
+        @Query("sol") sol: Int,
+        @Query("api_key") key: String = BuildConfig.API_KEY,
+        @Query("page") page: Int
+    ) : Observable<Response<BaseResponse>>
+
 }

@@ -44,4 +44,20 @@ class RoverRepository(
             })
         return liveData
     }
+
+    fun spiritLiveData(page: Int,camera: String? = null): LiveData<ArrayList<Photo?>> {
+        val liveData = MutableLiveData<ArrayList<Photo?>>()
+        service.getSpirit(page = page,camera = camera)
+            .apiResponse(object : IResource<BaseResponse> {
+                override fun onSuccess(t: BaseResponse) {
+                    liveData.postValue(t.photoList)
+                }
+
+                override fun onFailed() {
+                    Log.e("CuriosityViewModel", "onFailed: ")
+                }
+
+            })
+        return liveData
+    }
 }

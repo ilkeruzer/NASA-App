@@ -24,5 +24,5 @@ val networkModule = module {
 val viewModelModule = module {
     viewModel { CuriosityViewModel(get()) }
     viewModel { OpportunityViewModel(get()) }
-    viewModel { SpiritViewModel() }
+    viewModel { SpiritViewModel(get()) }
 }

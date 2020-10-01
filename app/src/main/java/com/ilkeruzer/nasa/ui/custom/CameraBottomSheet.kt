@@ -13,7 +13,7 @@ import com.ilkeruzer.nasa.R
 
 class CameraBottomSheet : BottomSheetDialogFragment() {
 
-    var itemType = ""
+    private var itemType = ""
     private var listItem: Array<String>? = null
     private var listView: ListView? = null
     private lateinit var cameraBottomSheet: CameraBottomSheet
@@ -22,31 +22,30 @@ class CameraBottomSheet : BottomSheetDialogFragment() {
 
     fun newInstance(type: String?): CameraBottomSheet {
         cameraBottomSheet = CameraBottomSheet()
-      /*  val bundle = Bundle()
+        val bundle = Bundle()
         bundle.putString("type", type)
         cameraBottomSheet.arguments = bundle
-
-       */
         return cameraBottomSheet
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
-        //outState.putString("type", itemType)
+        outState.putString("type", itemType)
         super.onSaveInstanceState(outState)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        /*val bundle: Bundle? = savedInstanceState ?: arguments
+        val bundle: Bundle? = savedInstanceState ?: arguments
         if (bundle != null) {
             itemType = bundle.getString("type", "")
-        } */
+        }
     }
 
     private fun initListItem() {
         when (itemType){
             "Curiosity" -> { listItem = resources.getStringArray(R.array.curiosity_camera) }
             "Opportunity" -> { listItem = resources.getStringArray(R.array.opportunity_camera) }
+            "Spirit" -> { listItem = resources.getStringArray(R.array.spirit_camera)  }
             else  -> {}
         }
     }
