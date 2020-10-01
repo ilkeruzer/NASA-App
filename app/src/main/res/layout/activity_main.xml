@@ -29,6 +29,7 @@
                 android:contentDescription="@string/app_name" />
 
             <ImageView
+                android:id="@+id/imageFilterIcon"
                 android:layout_width="@dimen/filter_icon_size"
                 android:layout_height="@dimen/filter_icon_size"
                 android:src="@drawable/ic_filter_list"

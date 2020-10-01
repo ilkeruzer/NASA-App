@@ -5,4 +5,56 @@
         <item>Opportunity</item>
         <item>Spirit</item>
     </string-array>
+    
+    <string-array name="curiosity_camera">
+        <item>Front Hazard Avoidance Camera</item>
+        <item>Rear Hazard Avoidance Camera</item>
+        <item>Mast Camera</item>
+        <item>Chemistry and Camera Complex</item>
+        <item>Mars Hand Lens Imager</item>
+        <item>Mars Descent Imager</item>
+        <item>Navigation Camera</item>
+    </string-array>
+
+    <string-array name="curiosity_code">
+        <item>FHAZ</item>
+        <item>RHAZ</item>
+        <item>MAST</item>
+        <item>CHEMCAM</item>
+        <item>MAHLI</item>
+        <item>MARDI</item>
+        <item>NAVCAM</item>
+    </string-array>
+    
+    <string-array name="opportunity_camera">
+        <item value="FHAZ">Front Hazard Avoidance Camera</item>
+        <item value="RHAZ">Rear Hazard Avoidance Camera</item>
+        <item value="NAVCAM">Navigation Camera</item>
+        <item value="PANCAM">Panoramic Camera</item>
+        <item value="MINITES">Miniature Thermal Emission Spectrometer (Mini-TES)</item>
+    </string-array>
+
+    <string-array name="opportunity_code">
+        <item>FHAZ</item>
+        <item>RHAZ</item>
+        <item>NAVCAM</item>
+        <item>PANCAM</item>
+        <item>MINITES</item>
+    </string-array>
+    
+    <string-array name="spirit_camera">
+        <item value="FHAZ">Front Hazard Avoidance Camera</item>
+        <item value="RHAZ">Rear Hazard Avoidance Camera</item>
+        <item value="NAVCAM">Navigation Camera</item>
+        <item value="PANCAM">Panoramic Camera</item>
+        <item value="MINITES">Miniature Thermal Emission Spectrometer (Mini-TES)</item>
+    </string-array>
+
+    <string-array name="spirit_code">
+        <item>FHAZ</item>
+        <item>RHAZ</item>
+        <item>NAVCAM</item>
+        <item>PANCAM</item>
+        <item>MINITES</item>
+    </string-array>
 </resources>

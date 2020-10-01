@@ -6,28 +6,33 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.ilkeruzer.nasa.IBaseListener
+import com.ilkeruzer.nasa.R
 import com.ilkeruzer.nasa.databinding.FragmentCuriosityBinding
 import com.ilkeruzer.nasa.model.Photo
 import com.ilkeruzer.nasa.ui.adapter.RoverAdapter
+import com.ilkeruzer.nasa.ui.custom.CameraBottomSheet
 import com.ilkeruzer.nasa.ui.fragment.BaseFragment
-import org.koin.android.ext.android.bind
+import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.android.inject
 
-class CuriosityFragment : BaseFragment<CuriosityViewModel>(), IBaseListener.Adapter<Photo> {
+
+class CuriosityFragment : BaseFragment<CuriosityViewModel>(), IBaseListener.Adapter<Photo>,
+    CameraBottomSheet.CameraListener {
 
     private val vM by inject<CuriosityViewModel>()
     private lateinit var binding: FragmentCuriosityBinding
     private val roverAdapter by inject<RoverAdapter>()
     private var listSize : Int = 1
+    private lateinit var cameraBottomSheet: CameraBottomSheet
+    private var cameraCode : String? = null
 
-    //TODO: MainActivity AppBar Eklenik kamerelar oraya eklenecek
 
     override fun equalsViewModel(savedInstanceState: Bundle?) {
         viewModel = vM
     }
 
     override fun getViewBindingRoot(inflater: LayoutInflater, container: ViewGroup?): View? {
-        binding = FragmentCuriosityBinding.inflate(inflater,container,false)
+        binding = FragmentCuriosityBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -36,13 +41,24 @@ class CuriosityFragment : BaseFragment<CuriosityViewModel>(), IBaseListener.Adap
     }
 
     override fun viewCreated(view: View, savedInstanceState: Bundle?) {
-        initRecycler()
         setData()
-
+        filterIconClick()
     }
 
-    private fun setData() {
-        viewModel.getLiveData(camera = "MAST").observe(this, {
+    private fun filterIconClick() {
+        activity!!.imageFilterIcon.setOnClickListener {
+            cameraBottomSheet = CameraBottomSheet().newInstance("Curiosity")
+            cameraBottomSheet.show(activity!!.supportFragmentManager, cameraBottomSheet.tag)
+            cameraBottomSheet.setListener(this)
+        }
+    }
+
+    private fun setData(camera: String? = null) {
+        showLoading()
+        viewModel.getLiveData(camera = camera).observe(this, {
+            if (it == null || it.size == 0) recyclerNullItem()
+            else initRecycler()
+            stopLoading()
             binding.recList.visibility = View.VISIBLE
             roverAdapter.notifyReload(it)
             listSize = roverAdapter.itemCount
@@ -57,16 +73,31 @@ class CuriosityFragment : BaseFragment<CuriosityViewModel>(), IBaseListener.Adap
         roverAdapter.setOnActionListener(this)
     }
 
+    private fun recyclerNullItem() {
+        binding.recList.apply {
+            setRecyclerView(true)
+            adapter = roverAdapter
+        }
+        roverAdapter.setOnActionListener(this)
+    }
+
     override fun onItemClick(item: Photo, position: Int) {
 
     }
 
     override fun onLoadMore(itemCount: Int) {
         val page = (itemCount / listSize) + 1
-        viewModel.getLiveData(page = page,camera = "MAST").observe(this, {
+        showLoading()
+        viewModel.getLiveData(page = page, camera = cameraCode).observe(this, {
             Log.d("CuriosityFragment", "onLoadMore: $it ")
+            stopLoading()
             roverAdapter.notifyDataSet(it)
         })
+    }
+
+    override fun listViewClickListener(position: Int) {
+        cameraCode = resources.getStringArray(R.array.curiosity_code)[position]
+        setData(cameraCode)
     }
 
 
