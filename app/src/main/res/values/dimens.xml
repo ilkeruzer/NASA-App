@@ -8,4 +8,5 @@
     <dimen name="dialog_first_text_margin_top">15dp</dimen>
     <dimen name="dialog_text_margi_top">8dp</dimen>
     <dimen name="no_photo_text_size">28sp</dimen>
+    <dimen name="text_field_margin">10dp</dimen>
 </resources>

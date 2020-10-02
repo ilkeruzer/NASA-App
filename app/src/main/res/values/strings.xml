@@ -3,11 +3,11 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="please_wait">Loading</string>
     <string name="select_camera">Select Camera</string>
-    <string name="date_taken"><font color="#EF1D26">Date Taken : </font></string>
-    <string name="rover_name"><font color="#EF1D26">Rover Name : </font></string>
-    <string name="camera_name"><font color="#EF1D26">Camera Name:</font></string>
-    <string name="rover_mission_status"><font color="#EF1D26">Rover Mission Status :</font></string>
-    <string name="rover_launch_date"><font color="#EF1D26">Rover Launch Date :</font></string>
-    <string name="rover_landing_date"><font color="#EF1D26">Rover Landing Date :</font></string>
+    <string name="date_taken"><font color="#EF1D26">Date Taken</font></string>
+    <string name="rover_name"><font color="#EF1D26">Rover Name</font></string>
+    <string name="camera_name"><font color="#EF1D26">Camera Name</font></string>
+    <string name="rover_mission_status"><font color="#EF1D26">Rover Mission Status</font></string>
+    <string name="rover_launch_date"><font color="#EF1D26">Rover Launch Date</font></string>
+    <string name="rover_landing_date"><font color="#EF1D26">Rover Landing Date</font></string>
     <string name="no_photo">No Photo To Display</string>
 </resources>

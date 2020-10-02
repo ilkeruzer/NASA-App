@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TextFieldView">
+        <attr name="textField_title" format="string"/>
+        <attr name="textField_text" format="string"/>
+    </declare-styleable>
+</resources>

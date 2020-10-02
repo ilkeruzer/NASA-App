@@ -13,6 +13,7 @@
         android:layout_height="@dimen/appBar_height"
         app:layout_constraintEnd_toEndOf="parent"
         android:background="@android:color/white"
+        android:theme="@style/SplashTheme"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" >
 

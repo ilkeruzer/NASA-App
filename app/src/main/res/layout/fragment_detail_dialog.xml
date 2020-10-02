@@ -1,84 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/cardView_current_bg"
     android:paddingBottom="19dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/imageView"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="350dp"
-        android:layout_height="300dp"
-        android:contentDescription="@string/app_name"
-        android:src="@drawable/nasa"
-        android:scaleType="fitXY"
+        android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/dateTakenText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dialog_first_text_margin_top"
-        android:text="@string/date_taken"
-        android:layout_marginStart="20dp"
-        android:textColor="@android:color/white"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        android:layout_marginLeft="20dp" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/roverName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dialog_text_margi_top"
-        android:text="@string/rover_name"
-        android:textColor="@android:color/white"
-        app:layout_constraintStart_toStartOf="@+id/dateTakenText"
-        app:layout_constraintTop_toBottomOf="@+id/dateTakenText" />
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="350dp"
+                android:layout_height="300dp"
+                android:contentDescription="@string/app_name"
+                android:scaleType="fitXY"
+                android:src="@drawable/nasa"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/cameraName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dialog_text_margi_top"
-        android:text="@string/camera_name"
-        android:textColor="@android:color/white"
-        app:layout_constraintStart_toStartOf="@+id/roverName"
-        app:layout_constraintTop_toBottomOf="@+id/roverName" />
+            <com.ilkeruzer.nasa.ui.custom.TextFieldView
+                android:id="@+id/dateTakenText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/text_field_margin"
+                android:layout_marginTop="@dimen/dialog_first_text_margin_top"
+                android:layout_marginRight="@dimen/text_field_margin"
+                app:layout_constraintEnd_toEndOf="@+id/imageView"
+                app:layout_constraintStart_toStartOf="@+id/imageView"
+                app:layout_constraintTop_toBottomOf="@+id/imageView"
+                app:textField_title="@string/date_taken" />
 
-    <TextView
-        android:id="@+id/statusText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dialog_text_margi_top"
-        android:text="@string/rover_mission_status"
-        android:textColor="@android:color/white"
-        app:layout_constraintStart_toStartOf="@+id/cameraName"
-        app:layout_constraintTop_toBottomOf="@+id/cameraName" />
+            <com.ilkeruzer.nasa.ui.custom.TextFieldView
+                android:id="@+id/roverName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dialog_text_margi_top"
+                android:textColor="@android:color/white"
+                app:layout_constraintEnd_toEndOf="@+id/dateTakenText"
+                app:layout_constraintStart_toStartOf="@+id/dateTakenText"
+                app:layout_constraintTop_toBottomOf="@+id/dateTakenText"
+                app:textField_title="@string/rover_name" />
 
-    <TextView
-        android:id="@+id/roverLaunchDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dialog_text_margi_top"
-        android:text="@string/rover_launch_date"
-        android:textColor="@android:color/white"
-        app:layout_constraintStart_toStartOf="@+id/statusText"
-        app:layout_constraintTop_toBottomOf="@+id/statusText" />
+            <com.ilkeruzer.nasa.ui.custom.TextFieldView
+                android:id="@+id/cameraName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dialog_text_margi_top"
+                android:textColor="@android:color/white"
+                app:layout_constraintEnd_toEndOf="@+id/dateTakenText"
+                app:layout_constraintStart_toStartOf="@+id/roverName"
+                app:layout_constraintTop_toBottomOf="@+id/roverName"
+                app:textField_title="@string/camera_name" />
 
-    <TextView
-        android:id="@+id/roverLandingDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dialog_text_margi_top"
-        android:text="@string/rover_landing_date"
-        android:textColor="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/roverLaunchDate"
-        app:layout_constraintTop_toBottomOf="@+id/roverLaunchDate" />
+            <com.ilkeruzer.nasa.ui.custom.TextFieldView
+                android:id="@+id/statusText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dialog_text_margi_top"
+                android:textColor="@android:color/white"
+                app:layout_constraintEnd_toEndOf="@+id/dateTakenText"
+                app:layout_constraintStart_toStartOf="@+id/cameraName"
+                app:layout_constraintTop_toBottomOf="@+id/cameraName"
+                app:textField_title="@string/rover_mission_status" />
+
+            <com.ilkeruzer.nasa.ui.custom.TextFieldView
+                android:id="@+id/roverLaunchDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dialog_text_margi_top"
+                android:textColor="@android:color/white"
+                app:layout_constraintEnd_toEndOf="@+id/dateTakenText"
+                app:layout_constraintStart_toStartOf="@+id/statusText"
+                app:layout_constraintTop_toBottomOf="@+id/statusText"
+                app:textField_title="@string/rover_launch_date" />
+
+            <com.ilkeruzer.nasa.ui.custom.TextFieldView
+                android:id="@+id/roverLandingDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dialog_text_margi_top"
+                android:textColor="@android:color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/dateTakenText"
+                app:layout_constraintStart_toStartOf="@+id/roverLaunchDate"
+                app:layout_constraintTop_toBottomOf="@+id/roverLaunchDate"
+                app:textField_title="@string/rover_landing_date" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

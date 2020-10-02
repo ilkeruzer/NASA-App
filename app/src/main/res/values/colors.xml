@@ -7,4 +7,5 @@
     <color name="page_bg_color">#1C1C1C</color>
     <color name="cardView_current_bg">@color/cardview_dark_background</color>
     <color name="indicator_bg">#3C3C3C</color>
+    <color name="text_title">#909DE6</color>
 </resources>

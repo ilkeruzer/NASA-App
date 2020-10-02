@@ -52,24 +52,23 @@ class DetailDialog : DialogFragment() {
             photo = bundle.getParcelable("photo")
             Log.d("DetailDialog", "onViewCreated: $photo")
         }
-        updateUI()
+
         dialog!!.window!!.setSoftInputMode(
             WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE
         )
 
-
-
+        updateUI()
     }
 
     private fun updateUI() {
         photo?.let {
             ImageLoader.glideImage(binding.imageView,it.img_src)
-            binding.roverName.append(" " + it.rover.name)
-            binding.dateTakenText.append(" " +it.earth_date)
-            binding.cameraName.append(" " + it.camera.full_name)
-            binding.statusText.append(" " + it.rover.status.capitalize(Locale.ROOT))
-            binding.roverLaunchDate.append(" " + it.rover.launch_date)
-            binding.roverLandingDate.append(" " + it.rover.landing_date)
+            binding.roverName.setTxtText(it.rover.name)
+            binding.dateTakenText.setTxtText(it.earth_date)
+            binding.cameraName.setTxtText(it.camera.full_name)
+            binding.statusText.setTxtText(it.rover.status.capitalize(Locale.ROOT))
+            binding.roverLaunchDate.setTxtText(it.rover.launch_date)
+            binding.roverLandingDate.setTxtText(it.rover.landing_date)
         }
 
     }
