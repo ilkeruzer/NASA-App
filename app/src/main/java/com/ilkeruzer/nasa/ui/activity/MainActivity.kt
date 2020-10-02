@@ -6,6 +6,8 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.ilkeruzer.nasa.R
 import com.ilkeruzer.nasa.databinding.ActivityMainBinding
 import com.ilkeruzer.nasa.ui.adapter.ViewPagerStateAdapter
+import com.ilkeruzer.nasa.ui.custom.pagerTransformer.DepthPageTransformer
+import com.ilkeruzer.nasa.ui.custom.pagerTransformer.ZoomOutPageTransformer
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,6 +28,12 @@ class MainActivity : AppCompatActivity() {
         TabLayoutMediator(binding.tablayout,binding.viewpager){tab, position ->
             tab.text = names[position]
         }.attach()
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            binding.viewpager.setPageTransformer(DepthPageTransformer())
+        } else {
+            binding.viewpager.setPageTransformer(ZoomOutPageTransformer())
+        }
     }
 
 

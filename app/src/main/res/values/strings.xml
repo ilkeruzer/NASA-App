@@ -9,4 +9,5 @@
     <string name="rover_mission_status"><font color="#EF1D26">Rover Mission Status :</font></string>
     <string name="rover_launch_date"><font color="#EF1D26">Rover Launch Date :</font></string>
     <string name="rover_landing_date"><font color="#EF1D26">Rover Landing Date :</font></string>
+    <string name="no_photo">No Photo To Display</string>
 </resources>

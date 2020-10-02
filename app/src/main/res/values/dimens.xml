@@ -7,4 +7,5 @@
     <dimen name="filter_icon_margin">8dp</dimen>
     <dimen name="dialog_first_text_margin_top">15dp</dimen>
     <dimen name="dialog_text_margi_top">8dp</dimen>
+    <dimen name="no_photo_text_size">28sp</dimen>
 </resources>
