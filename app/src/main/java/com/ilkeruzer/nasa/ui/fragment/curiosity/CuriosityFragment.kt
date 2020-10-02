@@ -11,6 +11,7 @@ import com.ilkeruzer.nasa.databinding.FragmentCuriosityBinding
 import com.ilkeruzer.nasa.model.Photo
 import com.ilkeruzer.nasa.ui.adapter.RoverAdapter
 import com.ilkeruzer.nasa.ui.custom.CameraBottomSheet
+import com.ilkeruzer.nasa.ui.custom.DetailDialog
 import com.ilkeruzer.nasa.ui.fragment.BaseFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.android.inject
@@ -83,7 +84,9 @@ class CuriosityFragment : BaseFragment<CuriosityViewModel>(), IBaseListener.Adap
     }
 
     override fun onItemClick(item: Photo, position: Int) {
-
+        Log.d("CuriosityFragment", "onItemClick: ")
+        val detailDialog = DetailDialog().newInstance(item)
+        detailDialog.show(activity!!.supportFragmentManager, detailDialog.tag)
     }
 
     override fun onLoadMore(itemCount: Int) {

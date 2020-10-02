@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/cardView_current_bg"
+    android:paddingBottom="19dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="350dp"
+        android:layout_height="300dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/nasa"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/dateTakenText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dialog_first_text_margin_top"
+        android:text="@string/date_taken"
+        android:layout_marginStart="20dp"
+        android:textColor="@android:color/white"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        android:layout_marginLeft="20dp" />
+
+    <TextView
+        android:id="@+id/roverName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dialog_text_margi_top"
+        android:text="@string/rover_name"
+        android:textColor="@android:color/white"
+        app:layout_constraintStart_toStartOf="@+id/dateTakenText"
+        app:layout_constraintTop_toBottomOf="@+id/dateTakenText" />
+
+    <TextView
+        android:id="@+id/cameraName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dialog_text_margi_top"
+        android:text="@string/camera_name"
+        android:textColor="@android:color/white"
+        app:layout_constraintStart_toStartOf="@+id/roverName"
+        app:layout_constraintTop_toBottomOf="@+id/roverName" />
+
+    <TextView
+        android:id="@+id/statusText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dialog_text_margi_top"
+        android:text="@string/rover_mission_status"
+        android:textColor="@android:color/white"
+        app:layout_constraintStart_toStartOf="@+id/cameraName"
+        app:layout_constraintTop_toBottomOf="@+id/cameraName" />
+
+    <TextView
+        android:id="@+id/roverLaunchDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dialog_text_margi_top"
+        android:text="@string/rover_launch_date"
+        android:textColor="@android:color/white"
+        app:layout_constraintStart_toStartOf="@+id/statusText"
+        app:layout_constraintTop_toBottomOf="@+id/statusText" />
+
+    <TextView
+        android:id="@+id/roverLandingDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dialog_text_margi_top"
+        android:text="@string/rover_landing_date"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/roverLaunchDate"
+        app:layout_constraintTop_toBottomOf="@+id/roverLaunchDate" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

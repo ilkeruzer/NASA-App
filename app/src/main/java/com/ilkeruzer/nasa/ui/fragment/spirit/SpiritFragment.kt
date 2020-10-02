@@ -13,6 +13,7 @@ import com.ilkeruzer.nasa.model.Photo
 import com.ilkeruzer.nasa.ui.BaseViewModel
 import com.ilkeruzer.nasa.ui.adapter.RoverAdapter
 import com.ilkeruzer.nasa.ui.custom.CameraBottomSheet
+import com.ilkeruzer.nasa.ui.custom.DetailDialog
 import com.ilkeruzer.nasa.ui.fragment.BaseFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.android.inject
@@ -83,7 +84,8 @@ class SpiritFragment : BaseFragment<SpiritViewModel>(), IBaseListener.Adapter<Ph
     }
 
     override fun onItemClick(item: Photo, position: Int) {
-
+        val detailDialog = DetailDialog().newInstance(item)
+        detailDialog.show(activity!!.supportFragmentManager, detailDialog.tag)
     }
 
     override fun onLoadMore(itemCount: Int) {
