@@ -5,6 +5,6 @@
 - MVVM 👍
 - LiveData/ ViewModel 👍
 - RxJava 👍
-- Dependenc injection (Koin) 👍
+- Dependency injection (Koin) 👍
 - Glide 👍
 - Unit Test ❌
