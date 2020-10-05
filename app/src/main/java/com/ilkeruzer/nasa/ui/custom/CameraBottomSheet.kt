@@ -8,6 +8,8 @@ import android.widget.AdapterView.OnItemClickListener
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.ilkeruzer.nasa.Constant
+import com.ilkeruzer.nasa.IBaseListener.CameraListener
 import com.ilkeruzer.nasa.R
 
 
@@ -16,20 +18,23 @@ class CameraBottomSheet : BottomSheetDialogFragment() {
     private var itemType = ""
     private var listItem: Array<String>? = null
     private var listView: ListView? = null
-    private lateinit var cameraBottomSheet: CameraBottomSheet
     private lateinit var listener: CameraListener
 
 
-    fun newInstance(type: String?): CameraBottomSheet {
-        cameraBottomSheet = CameraBottomSheet()
-        val bundle = Bundle()
-        bundle.putString("type", type)
-        cameraBottomSheet.arguments = bundle
-        return cameraBottomSheet
+    companion object {
+        fun newInstance(type: String?): CameraBottomSheet {
+            val cameraBottomSheet = CameraBottomSheet()
+            val bundle = Bundle()
+            bundle.putString(Constant.BUNDLE.TYPE, type)
+            cameraBottomSheet.arguments = bundle
+            return cameraBottomSheet
+        }
     }
 
+
+
     override fun onSaveInstanceState(outState: Bundle) {
-        outState.putString("type", itemType)
+        outState.putString(Constant.BUNDLE.TYPE, itemType)
         super.onSaveInstanceState(outState)
     }
 
@@ -37,7 +42,7 @@ class CameraBottomSheet : BottomSheetDialogFragment() {
         super.onCreate(savedInstanceState)
         val bundle: Bundle? = savedInstanceState ?: arguments
         if (bundle != null) {
-            itemType = bundle.getString("type", "")
+            itemType = bundle.getString(Constant.BUNDLE.TYPE, "")
         }
     }
 
@@ -57,7 +62,9 @@ class CameraBottomSheet : BottomSheetDialogFragment() {
         dialog.setContentView(contentView)
         dialog.setCancelable(false)
         listView = contentView.findViewById(R.id.listView)
+
         updateUI()
+        listViewItemClick()
     }
 
     private fun updateUI() {
@@ -68,6 +75,10 @@ class CameraBottomSheet : BottomSheetDialogFragment() {
             R.layout.camera_list_item, R.id.list_content, listItem!!
         )
         listView!!.adapter = adapter
+
+    }
+
+    private fun listViewItemClick() {
         listView!!.onItemClickListener =
             OnItemClickListener { _, _, position, _ ->
                 run {
@@ -83,7 +94,5 @@ class CameraBottomSheet : BottomSheetDialogFragment() {
         this.listener = listener
     }
 
-    interface CameraListener {
-        fun listViewClickListener(position: Int)
-    }
+
 }

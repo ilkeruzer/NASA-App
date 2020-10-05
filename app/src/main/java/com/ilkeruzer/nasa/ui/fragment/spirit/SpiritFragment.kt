@@ -2,15 +2,14 @@ package com.ilkeruzer.nasa.ui.fragment.spirit
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.ilkeruzer.nasa.IBaseListener
+import com.ilkeruzer.nasa.IBaseListener.Adapter
+import com.ilkeruzer.nasa.IBaseListener.CameraListener
 import com.ilkeruzer.nasa.R
 import com.ilkeruzer.nasa.databinding.FragmentSpiritBinding
 import com.ilkeruzer.nasa.model.Photo
-import com.ilkeruzer.nasa.ui.BaseViewModel
 import com.ilkeruzer.nasa.ui.adapter.RoverAdapter
 import com.ilkeruzer.nasa.ui.custom.CameraBottomSheet
 import com.ilkeruzer.nasa.ui.custom.DetailDialog
@@ -18,8 +17,8 @@ import com.ilkeruzer.nasa.ui.fragment.BaseFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.android.inject
 
-class SpiritFragment : BaseFragment<SpiritViewModel>(), IBaseListener.Adapter<Photo>,
-    CameraBottomSheet.CameraListener{
+class SpiritFragment : BaseFragment<SpiritViewModel>(), Adapter<Photo>,
+    CameraListener {
 
     private val vM by inject<SpiritViewModel>()
     private lateinit var binding: FragmentSpiritBinding
@@ -48,7 +47,7 @@ class SpiritFragment : BaseFragment<SpiritViewModel>(), IBaseListener.Adapter<Ph
 
     private fun filterIconClick() {
         activity!!.imageFilterIcon.setOnClickListener {
-            cameraBottomSheet = CameraBottomSheet().newInstance("Spirit")
+            cameraBottomSheet = CameraBottomSheet.newInstance("Spirit")
             cameraBottomSheet.show(activity!!.supportFragmentManager, cameraBottomSheet.tag)
             cameraBottomSheet.setListener(this)
         }
@@ -84,7 +83,7 @@ class SpiritFragment : BaseFragment<SpiritViewModel>(), IBaseListener.Adapter<Ph
     }
 
     override fun onItemClick(item: Photo, position: Int) {
-        val detailDialog = DetailDialog().newInstance(item)
+        val detailDialog = DetailDialog.newInstance(item)
         detailDialog.show(activity!!.supportFragmentManager, detailDialog.tag)
     }
 

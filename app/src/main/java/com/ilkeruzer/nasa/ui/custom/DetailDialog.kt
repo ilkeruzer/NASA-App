@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.annotation.Nullable
 import androidx.fragment.app.DialogFragment
-import com.ilkeruzer.nasa.R
 import com.ilkeruzer.nasa.databinding.FragmentDetailDialogBinding
 import com.ilkeruzer.nasa.model.Photo
 import com.ilkeruzer.nasa.util.ImageLoader
@@ -20,15 +19,18 @@ class DetailDialog : DialogFragment() {
     private var photo: Photo? = null
     private lateinit var binding: FragmentDetailDialogBinding
 
-    fun newInstance(photo: Photo): DetailDialog {
-        val detailDialog = DetailDialog()
-        Bundle().also {
-            it.putParcelable("photo", photo)
-            detailDialog.arguments = it
-        }
+    companion object {
+        fun newInstance(photo: Photo): DetailDialog {
+            val detailDialog = DetailDialog()
+            Bundle().also {
+                it.putParcelable("photo", photo)
+                detailDialog.arguments = it
+            }
 
-        return detailDialog
+            return detailDialog
+        }
     }
+
 
     override fun onSaveInstanceState(outState: Bundle) {
         outState.putParcelable("photo", photo)

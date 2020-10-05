@@ -46,7 +46,7 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun goToMain() {
-        Intent(this,MainActivity::class.java).apply {
+        Intent(this, MainActivity::class.java).apply {
             startActivity(this)
             finish()
         }

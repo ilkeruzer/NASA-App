@@ -12,25 +12,29 @@ interface IApiService {
     @GET("v1/rovers/curiosity/photos")
     fun getCuriosity(
         @Query("camera") camera: String?,
-        @Query("sol") sol: Int,
-        @Query("api_key") key: String = BuildConfig.API_KEY,
+        @Query("sol") sol: Int = DEFAULT_SOL,
+        @Query("api_key") key: String = API,
         @Query("page") page: Int
     ) : Observable<Response<BaseResponse>>
 
     @GET("v1/rovers/opportunity/photos")
     fun getOpportunity(
         @Query("camera") camera: String?,
-        @Query("sol") sol: Int,
-        @Query("api_key") key: String = BuildConfig.API_KEY,
+        @Query("sol") sol: Int = DEFAULT_SOL,
+        @Query("api_key") key: String = API,
         @Query("page") page: Int
     ) : Observable<Response<BaseResponse>>
 
     @GET("v1/rovers/spirit/photos")
     fun getSpirit(
         @Query("camera") camera: String?,
-        @Query("sol") sol: Int,
-        @Query("api_key") key: String = BuildConfig.API_KEY,
+        @Query("sol") sol: Int = DEFAULT_SOL,
+        @Query("api_key") key: String = API,
         @Query("page") page: Int
     ) : Observable<Response<BaseResponse>>
 
+    companion object {
+        const val DEFAULT_SOL = 1000
+        const val API = BuildConfig.API_KEY
+    }
 }

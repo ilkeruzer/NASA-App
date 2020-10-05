@@ -9,5 +9,11 @@ interface Constant {
         }
     }
 
+    interface BUNDLE {
+        companion object {
+            const val TYPE = BuildConfig.APPLICATION_ID + ".type"
+        }
+    }
+
 
 }

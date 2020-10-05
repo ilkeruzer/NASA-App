@@ -1,12 +1,12 @@
 package com.ilkeruzer.nasa.ui.fragment.opportunity
 
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.ilkeruzer.nasa.IBaseListener
+import com.ilkeruzer.nasa.IBaseListener.Adapter
+import com.ilkeruzer.nasa.IBaseListener.CameraListener
 import com.ilkeruzer.nasa.R
 import com.ilkeruzer.nasa.databinding.FragmentOpportunityBinding
 import com.ilkeruzer.nasa.model.Photo
@@ -17,8 +17,8 @@ import com.ilkeruzer.nasa.ui.fragment.BaseFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.android.inject
 
-class OpportunityFragment : BaseFragment<OpportunityViewModel>(), IBaseListener.Adapter<Photo>,
-    CameraBottomSheet.CameraListener {
+class OpportunityFragment : BaseFragment<OpportunityViewModel>(), Adapter<Photo>,
+    CameraListener {
 
     private val vM by inject<OpportunityViewModel>()
     private lateinit var binding: FragmentOpportunityBinding
@@ -52,7 +52,7 @@ class OpportunityFragment : BaseFragment<OpportunityViewModel>(), IBaseListener.
 
     private fun filterIconClick() {
         activity!!.imageFilterIcon.setOnClickListener {
-            cameraBottomSheet = CameraBottomSheet().newInstance("Opportunity")
+            cameraBottomSheet = CameraBottomSheet.newInstance("Opportunity")
             cameraBottomSheet.show(activity!!.supportFragmentManager, cameraBottomSheet.tag)
             cameraBottomSheet.setListener(this)
         }
@@ -61,7 +61,6 @@ class OpportunityFragment : BaseFragment<OpportunityViewModel>(), IBaseListener.
     private fun setData(camera: String? = null) {
         showLoading()
         viewModel.getLiveData(camera = camera).observe(this, {
-            Log.d("OpportunityFragment", "setData: ")
             if (it == null || it.size == 0) recyclerNullItem()
             else initRecycler()
             stopLoading()
@@ -104,7 +103,7 @@ class OpportunityFragment : BaseFragment<OpportunityViewModel>(), IBaseListener.
     }
 
     override fun onItemClick(item: Photo, position: Int) {
-        val detailDialog = DetailDialog().newInstance(item)
+        val detailDialog = DetailDialog.newInstance(item)
         detailDialog.show(activity!!.supportFragmentManager, detailDialog.tag)
     }
 

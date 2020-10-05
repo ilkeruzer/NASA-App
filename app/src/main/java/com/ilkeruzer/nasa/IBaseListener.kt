@@ -9,4 +9,7 @@ interface IBaseListener {
 
     }
 
+    interface CameraListener {
+        fun listViewClickListener(position: Int)
+    }
 }
