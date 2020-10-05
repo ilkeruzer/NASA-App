@@ -1,9 +1,11 @@
 package com.ilkeruzer.nasa.model
 
 import android.os.Parcelable
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Parcelize
 data class Photo(
     @SerializedName("id") val id: Int,
